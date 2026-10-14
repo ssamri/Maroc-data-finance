@@ -1,0 +1,4 @@
+# Optional dependencies for the local PDF / XLSX review pipeline.
+# Use an isolated virtual environment; the CSV pipeline uses the standard library.
+pypdf==6.10.0
+openpyxl==3.1.5

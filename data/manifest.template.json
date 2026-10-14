@@ -1,0 +1,10 @@
+{
+  "document": {
+    "sourceId": "mef",
+    "sourceUrl": "REPLACE_WITH_EXACT_OFFICIAL_HTTPS_DOCUMENT_URL",
+    "title": "REPLACE_WITH_DOCUMENT_TITLE",
+    "publicationDate": "REPLACE_WITH_YYYY-MM-DD"
+  },
+  "delimiter": ",",
+  "sheet": "REPLACE_WITH_XLSX_SHEET_NAME"
+}

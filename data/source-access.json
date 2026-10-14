@@ -1,0 +1,13 @@
+{
+  "checkedAt": "2026-10-14T12:25:05Z",
+  "method": "Read-only curl -I -L over HTTPS, TLS verification enabled, 10s connection / 20s total timeout",
+  "result": "HTTPS CONNECT rejected by the environment egress proxy with HTTP 403 (envoy); curl exit 56",
+  "retrievedDocumentCount": 0,
+  "approvedObservationCount": 0,
+  "domains": ["www.finances.gov.ma", "finances.gov.ma", "www.tgr.gov.ma", "www.bkam.ma", "www.hcp.ma", "www.oc.gov.ma", "www.courdescomptes.ma", "data.gov.ma", "www.imf.org", "www.worldbank.org", "api.worldbank.org"],
+  "apiCheck": {
+    "url": "https://api.worldbank.org/v2/country/MAR/indicator/GC.DOD.TOTL.GD.ZS?format=json",
+    "result": "CONNECT 403; no API response or series metadata retrieved; not integrated"
+  },
+  "limitations": "No claim is made about publication freshness, document availability or financial values. Institutional addresses are a source registry only."
+}
