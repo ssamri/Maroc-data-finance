@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "description": "Verified institution registry only. No document URL, publication freshness or financial fact has been verified in this environment. Exact reviewed document URLs and extraction mappings may be added later.",
+  "limits": {
+    "timeoutSeconds": 15,
+    "maxPagesPerSource": 3,
+    "maxDocumentsPerSource": 3,
+    "maxDocumentBytes": 33554432,
+    "workers": 3
+  },
+  "sources": [
+    { "id": "mef", "allowedHosts": ["finances.gov.ma", "www.finances.gov.ma"], "landingPages": ["https://www.finances.gov.ma/"], "discoveryTerms": ["dette", "debt", "budget", "PLF", "rapport", "finances"], "documents": [] },
+    { "id": "tgr", "allowedHosts": ["tgr.gov.ma", "www.tgr.gov.ma"], "landingPages": ["https://www.tgr.gov.ma/"], "discoveryTerms": ["bulletin", "statistiques", "finances", "rapport"], "documents": [] },
+    { "id": "bam", "allowedHosts": ["bkam.ma", "www.bkam.ma"], "landingPages": ["https://www.bkam.ma/"], "discoveryTerms": ["rapport", "annuel", "annual", "report", "statistiques"], "documents": [] },
+    { "id": "hcp", "allowedHosts": ["hcp.ma", "www.hcp.ma"], "landingPages": ["https://www.hcp.ma/"], "discoveryTerms": ["population", "RGPH", "comptes", "PIB", "national", "recensement"], "documents": [] },
+    { "id": "oc", "allowedHosts": ["oc.gov.ma", "www.oc.gov.ma"], "landingPages": ["https://www.oc.gov.ma/"], "discoveryTerms": ["rapport", "balance", "position", "indicateurs"], "documents": [] },
+    { "id": "cour", "allowedHosts": ["courdescomptes.ma", "www.courdescomptes.ma"], "landingPages": ["https://www.courdescomptes.ma/"], "discoveryTerms": ["rapport", "annuel", "finances"], "documents": [] },
+    { "id": "opendata", "allowedHosts": ["data.gov.ma", "www.data.gov.ma"], "landingPages": ["https://data.gov.ma/"], "discoveryTerms": ["finances", "budget", "population", "PIB", "dette"], "documents": [] },
+    { "id": "imf", "allowedHosts": ["imf.org", "www.imf.org"], "landingPages": ["https://www.imf.org/"], "discoveryTerms": ["Morocco", "Maroc", "المغرب"], "documents": [] },
+    { "id": "worldbank", "allowedHosts": ["worldbank.org", "www.worldbank.org"], "landingPages": ["https://www.worldbank.org/"], "discoveryTerms": ["Morocco", "Maroc", "المغرب"], "documents": [] }
+  ]
+}
