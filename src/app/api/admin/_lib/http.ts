@@ -1,14 +1,14 @@
 import { NextResponse } from "next/server";
 import { ZodError } from "zod";
 import { AdminAuthError } from "@/lib/supabase/server";
+import { isTrustedRequestOrigin } from "@/lib/request-origin";
 
 export function json(data: unknown, status = 200) {
   return NextResponse.json(data, { status, headers: { "Cache-Control": "no-store", "X-Content-Type-Options": "nosniff" } });
 }
 
 export function checkRequestOrigin(request: Request) {
-  const origin = request.headers.get("origin");
-  if (origin && origin !== new URL(request.url).origin) throw new HttpError(403, "ORIGIN_DENIED");
+  if (!isTrustedRequestOrigin(request, process.env.NEXT_PUBLIC_SITE_URL)) throw new HttpError(403, "ORIGIN_DENIED");
 }
 
 export class HttpError extends Error {
