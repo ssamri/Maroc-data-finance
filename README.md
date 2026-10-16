@@ -34,6 +34,8 @@ npm run dev
 
 Ouvrir `http://localhost:3000`. Les pages et le simulateur fonctionnent sans Supabase. Pour un serveur de production : `npm run build`, puis `npm run start`.
 
+Le build de production utilise **Webpack** (`next build --webpack`) afin de contourner le panic Turbopack constaté pendant la compilation CSS sur Hostinger. Conserver `npm run build` dans le panneau de déploiement ; le serveur de développement garde son réglage Next.js habituel.
+
 Pour extraire des PDF/XLSX en local :
 
 ```bash

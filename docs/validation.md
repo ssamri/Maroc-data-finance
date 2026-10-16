@@ -2,6 +2,8 @@
 
 ## Mise à jour du 16 octobre 2026
 
+Le journal Hostinger du build `01a1456d-6fe8-73ca-8764-7e4bd580468e` établit que le dépôt et `package.json` sont bien trouvés, puis montre un panic Turbopack lors de la connexion au processus CSS/PostCSS. Le build de production utilise désormais l’option Next.js prise en charge **`--webpack`**. Sa compilation, la vérification TypeScript, la génération des pages et les traces de production ont réussi localement. Le CSS n’a pas été supprimé et les vérifications restent actives.
+
 `npm run check` a de nouveau réussi : lint sans avertissement, TypeScript strict, **97 tests TypeScript dans 9 fichiers**, **24 tests Python** et build de production. Huit nouveaux cas protègent les requêtes administrateur derrière le reverse proxy HTTPS d’Hostinger : origine publique configurée acceptée, origines étrangères et configuration invalide refusées, aucun en-tête transféré arbitraire considéré comme fiable.
 
 Le code est publié sur la branche GitHub `feat/maroc-en-chiffres-v1`. Le guide [Hostinger](deployment.md) et le README indiquent la racine `.` et les commandes Node.js. La création/fusion de PR doit être vérifiée par son état GitHub, pas déduite de cette documentation.

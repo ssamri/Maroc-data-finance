@@ -31,6 +31,8 @@ L’application contient des routes serveur pour Supabase et l’administration.
 
 Les dépendances de développement sont nécessaires **pendant le build** : TypeScript et Tailwind en font partie. Le script `start` utilise déjà `next start --hostname 0.0.0.0`. **Conserver le port injecté par Hostinger dans `PORT`** ; Next.js le lit automatiquement. Ne pas imposer le port 3000 de votre poste de développement sur la plateforme gérée. Si le preset Next.js lit directement les scripts de `package.json`, il utilise les mêmes commandes sans champ supplémentaire.
 
+Le script `build` utilise **`next build --webpack`** pour la production. Le journal Hostinger du 16 octobre 2026 montre un panic interne Turbopack pendant le lancement de son processus CSS/PostCSS ; Webpack utilise le chemin de compilation pris en charge sans ce mécanisme. Dans Hostinger, conserver **`npm run build`** pour utiliser ce réglage du dépôt, plutôt que lancer directement `next build`.
+
 ### Ajouter les variables d’environnement
 
 Avant le build, ouvrir les paramètres/variables de l’application dans hPanel et ajouter :
@@ -57,6 +59,14 @@ Ces variables doivent être disponibles **au build et à l’exécution**. Si le
 ### Si « package.json introuvable » apparaît
 
 Dans GitHub, ouvrir le dépôt puis la **même branche que celle sélectionnée dans Hostinger**. Le fichier `package.json` doit être visible à la racine. S’il manque sur `main`, actualiser l’import après la fusion de la PR ou choisir temporairement la branche `feat/maroc-en-chiffres-v1`. S’il est bien présent, remettre le dossier racine sur **`.`**, actualiser l’analyse du dépôt et relancer le déploiement. Aucun nouveau dossier ni fichier `package.json` vide n’est à créer.
+
+### Si Turbopack échoue pendant la compilation CSS
+
+Le journal reçu le 16 octobre 2026 contient `TurbopackInternalError`, `creating new process` et `node process exited before we could connect to it` pour `admin-console.module.css`. Le fichier CSS est valide ; le processus de compilation Turbopack ne parvient pas à établir sa connexion dans l’environnement Hostinger. Le correctif du dépôt choisit Webpack pour le build de production, sans supprimer de CSS ni désactiver la vérification TypeScript.
+
+Après récupération du correctif sur `main`, relancer **`npm run build`**. Le journal doit afficher **`next build --webpack`**, puis **`Next.js 16.4.0 (webpack)`**. S’il affiche encore Turbopack, vérifier que Hostinger récupère bien le dernier commit de `main` et que la commande n’est pas remplacée par `next build` dans le panneau.
+
+Les quatre alertes npm du journal sont une seule vulnérabilité transitive des outils de développement (`@next/eslint-plugin-next → fast-glob → micromatch → braces`, [avis GHSA-vfj7-8cjw-p6xm](https://github.com/advisories/GHSA-vfj7-8cjw-p6xm)). L’audit des dépendances de production ne remonte aucune vulnérabilité au 16 octobre 2026. Ces alertes ne causent pas le panic Turbopack. Aucun correctif de version compatible n’étant disponible à cette date, ne pas appliquer la rétrogradation majeure suggérée par `npm audit fix --force` pour tenter de corriger ce build.
 
 ### Si votre compte ne propose que l’hébergement statique/PHP
 
